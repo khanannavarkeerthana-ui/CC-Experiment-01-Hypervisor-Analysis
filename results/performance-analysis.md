@@ -106,3 +106,42 @@ http://localhost:5000
 ### Result
 
 The Python Flask web application was successfully containerized using Docker. The Docker image was successfully built, the container was created and started, and the application was accessed through the browser using port 5000. The container was also successfully stopped, restarted, and removed.
+
+---
+
+## Comparison
+
+| Parameter | Type-1: Proxmox VE | Type-2: VMware Workstation | Docker |
+|---|---|---|---|
+| Technology | Proxmox VE | VMware Workstation | Docker |
+| Type | Type-1 Hypervisor | Type-2 Hypervisor | Container Platform |
+| Host OS | Proxmox host | Windows 11 | Windows 11 |
+| Guest/Container OS | Ubuntu | Ubuntu | Linux |
+| vCPU | 2 | 2 | Uses host CPU |
+| RAM | 2048 MB | 2048 MB | Uses host resources |
+| Disk | 20 GB | 20 GB | Uses container/image storage |
+| Network | vmbr0 | NAT | Port 5000 |
+| Application | Ubuntu VM | Ubuntu VM | Python Flask |
+| Benchmark | Sysbench CPU | Sysbench CPU | Flask application |
+| Main Purpose | Virtual machine management | Virtual machine management | Application containerization |
+
+### Performance Comparison
+
+| Metric | Type-1: Proxmox VE | Type-2: VMware Workstation |
+|---|---:|---:|
+| Total Execution Time | 10.0006 seconds | Recorded in Type-2 screenshot |
+| Total Events | 16,903 | Recorded in Type-2 screenshot |
+| Events per Second | 1,689.43 | Recorded in Type-2 screenshot |
+| Average Latency | 0.59 ms | Recorded in Type-2 screenshot |
+
+### Comparison Result
+
+The Type-1 and Type-2 hypervisors were tested using Ubuntu virtual machines with 2 vCPUs, 2048 MB RAM and a 20 GB virtual disk. The same Sysbench CPU benchmark with a prime number limit of 20,000 was used for both hypervisors.
+
+Proxmox VE was tested as a Type-1 hypervisor and produced a Sysbench result of 1,689.43 events per second with an average latency of 0.59 ms.
+
+VMware Workstation was tested as a Type-2 hypervisor using the same benchmark. Its measured values are available in the Type-2 Sysbench screenshot.
+
+Docker was evaluated separately as a container platform. Unlike the two hypervisors, Docker runs applications inside containers instead of running a complete guest operating system in a virtual machine.
+
+Therefore, Proxmox VE and VMware Workstation are compared as virtualization technologies, while Docker is considered a containerization technology.
