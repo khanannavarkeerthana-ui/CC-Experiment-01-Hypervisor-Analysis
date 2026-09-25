@@ -1,21 +1,23 @@
-# Performance Analysis
+Performance Analysis
 
-# Performance Analysis
+Type-1 Hypervisor - Proxmox VE
 
-## Type-1 Hypervisor - Proxmox VE
+Configuration
 
-### Configuration
+Hypervisor: Proxmox VE
 
-* Hypervisor: Proxmox VE
-* Guest OS: Ubuntu
-* vCPU: 2
-* RAM: 2048 MB
-* Disk: 20 GB
-* Network: vmbr0
+Guest OS: Ubuntu
 
-### Commands Used
+vCPU: 2
 
-```bash
+RAM: 2048 MB
+
+Disk: 20 GB
+
+Network: vmbr0
+
+Commands Used
+
 hostnamectl
 lscpu
 free -h
@@ -27,21 +29,24 @@ sudo apt install sysbench -y
 sysbench --version
 sysbench cpu --cpu-max-prime=20000 run
 
+Type-2 Hypervisor - VMware Workstation
 
-## Type-2 Hypervisor - VMware Workstation
+Configuration
 
-### Configuration
+Hypervisor: VMware Workstation
 
-* Hypervisor: VMware Workstation
-* Guest OS: Ubuntu
-* vCPU: 2
-* RAM: 2048 MB
-* Disk: 20 GB
-* Network: NAT
+Guest OS: Ubuntu
 
-### Commands Used
+vCPU: 2
 
-```bash
+RAM: 2048 MB
+
+Disk: 20 GB
+
+Network: NAT
+
+Commands Used
+
 hostnamectl
 lscpu
 free -h
@@ -52,35 +57,43 @@ sudo apt update
 sudo apt install sysbench -y
 sysbench --version
 sysbench cpu --cpu-max-prime=20000 run
-```
 
-## Docker
+Docker
 
-### Configuration
+Configuration
 
-* Container Platform: Docker
-* Host OS: Windows 11
-* Container OS: Linux
-* Base Image: Python 3.12-slim
-* Application: Python Flask Web Application
-* Container Port: 5000
-* Host Port: 5000
-* Container Name: my-python-container
-* Docker Image: my-python-app
+Container Platform: Docker
 
-### Application
+Host OS: Windows 11
+
+Container OS: Linux
+
+Base Image: Python 3.12-slim
+
+Application: Python Flask Web Application
+
+Container Port: 5000
+
+Host Port: 5000
+
+Container Name: my-python-container
+
+Docker Image: my-python-app
+
+Application
 
 A simple Python Flask web application was created and containerized using Docker.
 
-### Files Used
+Files Used
 
-* app.py
-* requirements.txt
-* Dockerfile
+app.py
 
-### Commands Used
+requirements.txt
 
-```bash
+Dockerfile
+
+Commands Used
+
 wsl --version
 docker --version
 docker run hello-world
@@ -95,46 +108,146 @@ docker stop my-python-container
 docker rm my-python-container
 docker ps -a
 docker images
-```
 
-### Application Access
+Application Access
 
-```text
 http://localhost:5000
-```
 
-### Result
+Result
 
 The Python Flask web application was successfully containerized using Docker. The Docker image was successfully built, the container was created and started, and the application was accessed through the browser using port 5000. The container was also successfully stopped, restarted, and removed.
 
----
+Comparison
 
-## Comparison
+Parameter
 
-| Parameter | Type-1: Proxmox VE | Type-2: VMware Workstation | Docker |
-|---|---|---|---|
-| Technology | Proxmox VE | VMware Workstation | Docker |
-| Type | Type-1 Hypervisor | Type-2 Hypervisor | Container Platform |
-| Host OS | Proxmox host | Windows 11 | Windows 11 |
-| Guest/Container OS | Ubuntu | Ubuntu | Linux |
-| vCPU | 2 | 2 | Uses host CPU |
-| RAM | 2048 MB | 2048 MB | Uses host resources |
-| Disk | 20 GB | 20 GB | Uses container/image storage |
-| Network | vmbr0 | NAT | Port 5000 |
-| Application | Ubuntu VM | Ubuntu VM | Python Flask |
-| Benchmark | Sysbench CPU | Sysbench CPU | Flask application |
-| Main Purpose | Virtual machine management | Virtual machine management | Application containerization |
+Type-1: Proxmox VE
 
-### Performance Comparison
+Type-2: VMware Workstation
 
-| Metric | Type-1: Proxmox VE | Type-2: VMware Workstation |
-|---|---:|---:|
-| Total Execution Time | 10.0006 seconds | Recorded in Type-2 screenshot |
-| Total Events | 16,903 | Recorded in Type-2 screenshot |
-| Events per Second | 1,689.43 | Recorded in Type-2 screenshot |
-| Average Latency | 0.59 ms | Recorded in Type-2 screenshot |
+Docker
 
-### Comparison Result
+Technology
+
+Proxmox VE
+
+VMware Workstation
+
+Docker
+
+Type
+
+Type-1 Hypervisor
+
+Type-2 Hypervisor
+
+Container Platform
+
+Host OS
+
+Proxmox host
+
+Windows 11
+
+Windows 11
+
+Guest/Container OS
+
+Ubuntu
+
+Ubuntu
+
+Linux
+
+vCPU
+
+2
+
+2
+
+Uses host CPU
+
+RAM
+
+2048 MB
+
+2048 MB
+
+Uses host resources
+
+Disk
+
+20 GB
+
+20 GB
+
+Uses container/image storage
+
+Network
+
+vmbr0
+
+NAT
+
+Port 5000
+
+Application
+
+Ubuntu VM
+
+Ubuntu VM
+
+Python Flask
+
+Benchmark
+
+Sysbench CPU
+
+Sysbench CPU
+
+Flask application
+
+Main Purpose
+
+Virtual machine management
+
+Virtual machine management
+
+Application containerization
+
+Performance Comparison
+
+Metric
+
+Type-1: Proxmox VE
+
+Type-2: VMware Workstation
+
+Total Execution Time
+
+10.0006 seconds
+
+Recorded in Type-2 screenshot
+
+Total Events
+
+16,903
+
+Recorded in Type-2 screenshot
+
+Events per Second
+
+1,689.43
+
+Recorded in Type-2 screenshot
+
+Average Latency
+
+0.59 ms
+
+Recorded in Type-2 screenshot
+
+Comparison Result
 
 The Type-1 and Type-2 hypervisors were tested using Ubuntu virtual machines with 2 vCPUs, 2048 MB RAM and a 20 GB virtual disk. The same Sysbench CPU benchmark with a prime number limit of 20,000 was used for both hypervisors.
 
