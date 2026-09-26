@@ -58,6 +58,10 @@ sysbench cpu --cpu-max-prime=20000 run
 
 
 
+\---
+
+
+
 \## Type-2 Hypervisor - VMware Workstation
 
 
@@ -111,6 +115,10 @@ sysbench --version
 sysbench cpu --cpu-max-prime=20000 run
 
 ```
+
+
+
+\---
 
 
 
@@ -264,81 +272,7 @@ http://localhost:5000
 
 
 
-The Docker image was successfully built and the container was created and started successfully. The Flask application was accessed through the mapped host port `5000`.
-
-
-
-The container was also successfully stopped, restarted, and finally removed while the Docker image remained available.
-
-
-
-\## Comparison of Type-1 and Type-2 Hypervisors
-
-
-
-\### Configuration Comparison
-
-
-
-| Feature         | Type-1: Proxmox VE | Type-2: VMware Workstation |
-
-| --------------- | ------------------ | -------------------------- |
-
-| Hypervisor Type | Type-1             | Type-2                     |
-
-| Guest OS        | Ubuntu             | Ubuntu                     |
-
-| vCPU            | 2                  | 2                          |
-
-| RAM             | 2048 MB            | 2048 MB                    |
-
-| Disk            | 20 GB              | 20 GB                      |
-
-| Network         | vmbr0              | NAT                        |
-
-| Benchmark Tool  | Sysbench           | Sysbench                   |
-
-
-
-\### Performance Comparison
-
-
-
-| Metric               | Type-1: Proxmox VE | Type-2: VMware Workstation |
-
-| -------------------- | -----------------: | -------------------------: |
-
-| CPU Benchmark        |       Sysbench CPU |               Sysbench CPU |
-
-| CPU Prime Limit      |              20000 |                      20000 |
-
-| Number of Threads    |                  1 |                          1 |
-
-| Total Execution Time |    10.0006 seconds |            10.0005 seconds |
-
-| Total Events         |              16903 |                     181042 |
-
-| Events per Second    |            1689.43 |                   18101.20 |
-
-| Average Latency      |            0.59 ms |                    0.05 ms |
-
-
-
-\### Performance Graphs
-
-
-
-The following graphs show the measured performance comparison between Proxmox VE and VMware Workstation:
-
-
-
-\* CPU Events per Second
-
-\* Total Execution Time
-
-\* Average Latency
-
-\* Allocated Memory
+The Docker image was successfully built and the container was created and started successfully. The Flask application was accessed through t
 
 
 
