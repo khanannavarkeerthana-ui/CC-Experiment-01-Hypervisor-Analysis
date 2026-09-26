@@ -26,23 +26,17 @@ sudo apt update
 sudo apt install sysbench -y
 sysbench --version
 sysbench cpu --cpu-max-prime=20000 run
-
-## Type-2 Hypervisor - VMware Workstation
-
-### Configuration
-
-* Hypervisor: VMware Workstation
-* Hypervisor Type: Type-2
-* Guest OS: Ubuntu
-* vCPU: 2
-* RAM: 2048 MB
-* Disk: 20 GB
-* Network: NAT
-* Benchmark Tool: Sysbench
-
-### Commands Used
-
-```bash
+Type-2 Hypervisor - VMware Workstation
+Configuration
+Hypervisor: VMware Workstation
+Hypervisor Type: Type-2
+Guest OS: Ubuntu
+vCPU: 2
+RAM: 2048 MB
+Disk: 20 GB
+Network: NAT
+Benchmark Tool: Sysbench
+Commands Used
 hostnamectl
 lscpu
 free -h
@@ -53,30 +47,24 @@ sudo apt update
 sudo apt install sysbench -y
 sysbench --version
 sysbench cpu --cpu-max-prime=20000 run
-
-## Docker
-
-## Container-Based Application
-
-### Configuration
-
-- Container Platform: Docker
-- Host OS: Windows 11
-- Container OS: Linux
-- Base Image: Python 3.12-slim
-- Application: Python Flask Web Application
-- Container Port: 5000
-- Host Port: 5000
-- Container Name: `my-python-container`
-- Docker Image: `my-python-app`
-
-## Application
+Docker
+Container-Based Application
+Configuration
+Container Platform: Docker
+Host OS: Windows 11
+Container OS: Linux
+Base Image: Python 3.12-slim
+Application: Python Flask Web Application
+Container Port: 5000
+Host Port: 5000
+Container Name: my-python-container
+Docker Image: my-python-app
+Application
 
 A simple Python Flask web application was created and containerized using Docker.
 
 The application displays:
 
-```text
 Hello! My first Docker application is running.
 Files Used
 app.py – Flask web application
@@ -117,5 +105,3 @@ Result
 The Docker image was successfully built and the container was created and started successfully. The Flask application was accessed through the mapped host port 5000.
 
 The container was also successfully stopped, restarted, and finally removed while the Docker image remained available.
-
-Available next action: :contentReference[oaicite:0]{index=0}
