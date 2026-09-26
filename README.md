@@ -1,336 +1,344 @@
-# \# Performance Analysis
+\# Performance Analysis
 
-# 
 
-# \## Type-1 Hypervisor - Proxmox VE
 
-# 
+\## Type-1 Hypervisor - Proxmox VE
 
-# \### Configuration
 
-# 
 
-# \* Hypervisor: Proxmox VE
+\### Configuration
 
-# \* Hypervisor Type: Type-1
 
-# \* Guest OS: Ubuntu
 
-# \* vCPU: 2
+\* Hypervisor: Proxmox VE
 
-# \* RAM: 2048 MB
+\* Hypervisor Type: Type-1
 
-# \* Disk: 20 GB
+\* Guest OS: Ubuntu
 
-# \* Network: vmbr0
+\* vCPU: 2
 
-# \* Benchmark Tool: Sysbench
+\* RAM: 2048 MB
 
-# 
+\* Disk: 20 GB
 
-# \### Commands Used
+\* Network: vmbr0
 
-# 
+\* Benchmark Tool: Sysbench
 
-# ```bash
 
-# hostnamectl
 
-# lscpu
+\### Commands Used
 
-# free -h
 
-# df -h
 
-# top
+```bash
 
-# ping -c 3 google.com
+hostnamectl
 
-# sudo apt update
+lscpu
 
-# sudo apt install sysbench -y
+free -h
 
-# sysbench --version
+df -h
 
-# sysbench cpu --cpu-max-prime=20000 run
+top
 
-# ```
+ping -c 3 google.com
 
-# \## Type-2 Hypervisor - VMware Workstation
+sudo apt update
 
-# 
+sudo apt install sysbench -y
 
-# \### Configuration
+sysbench --version
 
-# 
+sysbench cpu --cpu-max-prime=20000 run
 
-# \* Hypervisor: VMware Workstation
+```
 
-# \* Hypervisor Type: Type-2
 
-# \* Guest OS: Ubuntu
 
-# \* vCPU: 2
+\## Type-2 Hypervisor - VMware Workstation
 
-# \* RAM: 2048 MB
 
-# \* Disk: 20 GB
 
-# \* Network: NAT
+\### Configuration
 
-# \* Benchmark Tool: Sysbench
 
-# 
 
-# \### Commands Used
+\* Hypervisor: VMware Workstation
 
-# 
+\* Hypervisor Type: Type-2
 
-# ```bash
+\* Guest OS: Ubuntu
 
-# hostnamectl
+\* vCPU: 2
 
-# lscpu
+\* RAM: 2048 MB
 
-# free -h
+\* Disk: 20 GB
 
-# df -h
+\* Network: NAT
 
-# top
+\* Benchmark Tool: Sysbench
 
-# ping -c 3 google.com
 
-# sudo apt update
 
-# sudo apt install sysbench -y
+\### Commands Used
 
-# sysbench --version
 
-# sysbench cpu --cpu-max-prime=20000 run
 
-# ```
+```bash
 
-# \## Docker
+hostnamectl
 
-# 
+lscpu
 
-# \## Container-Based Application
+free -h
 
-# 
+df -h
 
-# \### Configuration
+top
 
-# 
+ping -c 3 google.com
 
-# \- Container Platform: Docker
+sudo apt update
 
-# \- Host OS: Windows 11
+sudo apt install sysbench -y
 
-# \- Container OS: Linux
+sysbench --version
 
-# \- Base Image: Python 3.12-slim
+sysbench cpu --cpu-max-prime=20000 run
 
-# \- Application: Python Flask Web Application
+```
 
-# \- Container Port: 5000
 
-# \- Host Port: 5000
 
-# \- Container Name: `my-python-container`
+\## Docker
 
-# \- Docker Image: `my-python-app`
 
-# 
 
-# \### Application
+\### Container-Based Application
 
-# 
 
-# A simple Python Flask web application was created and containerized using Docker.
 
-# 
+\### Configuration
 
-# The application displays:
 
-# 
 
-# ```text
+\* Container Platform: Docker
 
-# Hello! My first Docker application is running.
+\* Host OS: Windows 11
 
-# ```
+\* Container OS: Linux
 
-# 
+\* Base Image: Python 3.12-slim
 
-# \### Files Used
+\* Application: Python Flask Web Application
 
-# 
+\* Container Port: 5000
 
-# \- `app.py` – Flask web application
+\* Host Port: 5000
 
-# \- `requirements.txt` – Flask dependency
+\* Container Name: `my-python-container`
 
-# \- `Dockerfile` – Instructions for building the Docker image
+\* Docker Image: `my-python-app`
 
-# 
 
-# \### Dockerfile
 
-# 
+\### Application
 
-# ```dockerfile
 
-# FROM python:3.12-slim
 
-# WORKDIR /app
+A simple Python Flask web application was created and containerized using Docker.
 
-# COPY requirements.txt .
 
-# RUN pip install -r requirements.txt
 
-# COPY app.py .
+The application displays:
 
-# EXPOSE 5000
 
-# CMD \["python", "app.py"]
 
-# ```
+```text
 
-# 
+Hello! My first Docker application is running.
 
-# \### Commands Used
+```
 
-# 
 
-# ```bash
 
-# wsl --version
+\### Files Used
 
-# docker --version
 
-# docker run hello-world
 
-# docker buildx build --load -t my-python-app .
+\* `app.py` – Flask web application
 
-# docker images
+\* `requirements.txt` – Flask dependency
 
-# docker run -d -p 5000:5000 --name my-python-container my-python-app
+\* `Dockerfile` – Instructions for building the Docker image
 
-# docker ps
 
-# docker logs my-python-container
 
-# docker stop my-python-container
+\### Dockerfile
 
-# docker ps
 
-# docker start my-python-container
 
-# docker ps
+```dockerfile
 
-# docker stop my-python-container
+FROM python:3.12-slim
 
-# docker rm my-python-container
+WORKDIR /app
 
-# docker ps -a
+COPY requirements.txt .
 
-# docker images
+RUN pip install -r requirements.txt
 
-# ```
+COPY app.py .
 
-# 
+EXPOSE 5000
 
-# \### Accessing the Application
+CMD \["python", "app.py"]
 
-# 
+```
 
-# The Flask application was accessed through the browser using:
 
-# 
 
-# ```text
+\### Commands Used
 
-# http://localhost:5000
 
-# ```
 
-# 
+```bash
 
-# \### Result
+wsl --version
 
-# 
+docker --version
 
-# The Docker image was successfully built and the container was created and started successfully. The Flask application was accessed through the mapped host port `5000`.
+docker run hello-world
 
-# 
+docker buildx build --load -t my-python-app .
 
-# The container was also successfully stopped, restarted, and finally removed while the Docker image remained available.
+docker images
 
-# \## Comparison of Type-1 and Type-2 Hypervisors
+docker run -d -p 5000:5000 --name my-python-container my-python-app
 
-# 
+docker ps
 
-# \### Configuration Comparison
+docker logs my-python-container
 
-# 
+docker stop my-python-container
 
-# | Feature | Type-1: Proxmox VE | Type-2: VMware Workstation |
+docker ps
 
-# |---|---|---|
+docker start my-python-container
 
-# | Hypervisor Type | Type-1 | Type-2 |
+docker ps
 
-# | Guest OS | Ubuntu | Ubuntu |
+docker stop my-python-container
 
-# | vCPU | 2 | 2 |
+docker rm my-python-container
 
-# | RAM | 2048 MB | 2048 MB |
+docker ps -a
 
-# | Disk | 20 GB | 20 GB |
+docker images
 
-# | Network | vmbr0 | NAT |
+```
 
-# | Benchmark Tool | Sysbench | Sysbench |
 
-# 
 
-# \### Performance Comparison
+\### Accessing the Application
 
-# 
 
-# | Metric | Type-1: Proxmox VE | Type-2: VMware Workstation |
 
-# |---|---:|---:|
+The Flask application was accessed through the browser using:
 
-# | CPU Benchmark | Sysbench CPU | Sysbench CPU |
 
-# | CPU Prime Limit | 20000 | 20000 |
 
-# | Number of Threads | 1 | 1 |
+```text
 
-# | Total Execution Time | 10.0006 seconds | 10.0005 seconds |
+http://localhost:5000
 
-# | Total Events | 16903 | 181042 |
+```
 
-# | Events per Second | 1689.43 | 18101.20 |
 
-# | Average Latency | 0.59 ms | 0.05 ms |
 
-# 
+\### Result
 
-# \### Performance Graphs
 
-# 
 
-# The following graphs show the measured performance comparison between Proxmox VE and VMware Workstation:
+The Docker image was successfully built and the container was created and started successfully. The Flask application was accessed through the mapped host port `5000`.
 
-# 
 
-# \- CPU Events per Second
 
-# \- Total Execution Time
+The container was also successfully stopped, restarted, and finally removed while the Docker image remained available.
 
-# \- Average Latency
 
-# \- Allocated Memory
+
+\## Comparison of Type-1 and Type-2 Hypervisors
+
+
+
+\### Configuration Comparison
+
+
+
+| Feature         | Type-1: Proxmox VE | Type-2: VMware Workstation |
+
+| --------------- | ------------------ | -------------------------- |
+
+| Hypervisor Type | Type-1             | Type-2                     |
+
+| Guest OS        | Ubuntu             | Ubuntu                     |
+
+| vCPU            | 2                  | 2                          |
+
+| RAM             | 2048 MB            | 2048 MB                    |
+
+| Disk            | 20 GB              | 20 GB                      |
+
+| Network         | vmbr0              | NAT                        |
+
+| Benchmark Tool  | Sysbench           | Sysbench                   |
+
+
+
+\### Performance Comparison
+
+
+
+| Metric               | Type-1: Proxmox VE | Type-2: VMware Workstation |
+
+| -------------------- | -----------------: | -------------------------: |
+
+| CPU Benchmark        |       Sysbench CPU |               Sysbench CPU |
+
+| CPU Prime Limit      |              20000 |                      20000 |
+
+| Number of Threads    |                  1 |                          1 |
+
+| Total Execution Time |    10.0006 seconds |            10.0005 seconds |
+
+| Total Events         |              16903 |                     181042 |
+
+| Events per Second    |            1689.43 |                   18101.20 |
+
+| Average Latency      |            0.59 ms |                    0.05 ms |
+
+
+
+\### Performance Graphs
+
+
+
+The following graphs show the measured performance comparison between Proxmox VE and VMware Workstation:
+
+
+
+\* CPU Events per Second
+
+\* Total Execution Time
+
+\* Average Latency
+
+\* Allocated Memory
+
+
 
