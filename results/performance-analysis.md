@@ -149,17 +149,20 @@ The container was also successfully stopped, restarted, and finally removed whil
 ### Performance Comparison
 
 | Metric | Type-1: Proxmox VE | Type-2: VMware Workstation |
-|---|---|---|
+|---|---:|---:|
 | CPU Benchmark | Sysbench CPU | Sysbench CPU |
 | CPU Prime Limit | 20000 | 20000 |
 | Number of Threads | 1 | 1 |
-| Total Execution Time | 10.0006 seconds | Recorded from VMware Sysbench result |
-| Total Events | 16903 | Recorded from VMware Sysbench result |
-| Events per Second | 1689.43 | Recorded from VMware Sysbench result |
-| Average Latency | 0.59 ms | Recorded from VMware Sysbench result |
+| Total Execution Time | 10.0006 seconds | 10.0005 seconds |
+| Total Events | 16903 | 181042 |
+| Events per Second | 1689.43 | 18101.20 |
+| Average Latency | 0.59 ms | 0.05 ms |
 
-### Comparison Result
+### Performance Graphs
 
-Both Type-1 and Type-2 hypervisors were configured with the same guest operating system, CPU allocation, memory, disk size, and Sysbench CPU benchmark settings.
+The following graphs show the measured performance comparison between Proxmox VE and VMware Workstation:
 
-The Type-1 hypervisor used Proxmox VE, while the Type-2 hypervisor used VMware Workstation. The benchmark results can be compared using total execution time, total events, events per second, and latency.
+- CPU Events per Second
+- Total Execution Time
+- Average Latency
+- Allocated Memory
