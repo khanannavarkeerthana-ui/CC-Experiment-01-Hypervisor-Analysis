@@ -180,11 +180,11 @@ The following graphs show the measured performance comparison between Proxmox VE
 
 #### CPU Events per Second
 
-![CPU Events per Second](screenshots/comparison/your-file-name.png)
+![CPU Events per Second](screenshots/comparison/cpu-events-per-second-comparison.png)
 
 #### Total Execution Time
 
-![Total Execution Time](screenshots/comparison/your-file-name.png)
+![Total Execution Time](screenshots/comparison/)
 
 #### Average Latency
 
