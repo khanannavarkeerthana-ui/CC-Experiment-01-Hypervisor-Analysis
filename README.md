@@ -176,7 +176,7 @@ The following graphs show the measured performance comparison between Proxmox VE
 * Average Latency
 * Allocated Memory
 
-  ### Comparison Screenshots
+### Comparison Screenshots
 
 #### CPU Events per Second
 
