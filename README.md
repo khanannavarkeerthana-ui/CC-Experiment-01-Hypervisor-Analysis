@@ -184,7 +184,7 @@ The following graphs show the measured performance comparison between Proxmox VE
 
 #### Total Execution Time
 
-![Total Execution Time](screenshots/comparison/)
+![Total Execution Time](screenshots/comparison/execution-time-comparison.png)
 
 #### Average Latency
 
