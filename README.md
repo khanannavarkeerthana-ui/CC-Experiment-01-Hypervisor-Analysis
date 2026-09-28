@@ -188,7 +188,7 @@ The following graphs show the measured performance comparison between Proxmox VE
 
 #### Average Latency
 
-![Average Latency](screenshots/comparison/your-file-name.png)
+![Average Latency](screenshots/comparison/average-latency-comparison.png)
 
 #### Allocated Memory
 
