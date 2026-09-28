@@ -192,4 +192,4 @@ The following graphs show the measured performance comparison between Proxmox VE
 
 #### Allocated Memory
 
-![Allocated Memory](screenshots/comparison/your-file-name.png)
+![Allocated Memory](screenshots/comparison/allocated-memory-comparison.png)
