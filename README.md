@@ -1,104 +1,100 @@
-<h1>Performance Analysis</h1>
+# Performance Analysis of Type-1 and Type-2 Hypervisors
 
-<h2>Type-1 Hypervisor - Proxmox VE</h2>
+## Type-1 Hypervisor – Proxmox VE
 
-<h3>Configuration</h3>
+### Configuration
 
-<ul>
-<li>Hypervisor: Proxmox VE</li>
-<li>Hypervisor Type: Type-1</li>
-<li>Guest OS: Ubuntu</li>
-<li>vCPU: 2</li>
-<li>RAM: 2048 MB</li>
-<li>Disk: 20 GB</li>
-<li>Network: vmbr0</li>
-<li>Benchmark Tool: Sysbench</li>
-</ul>
+* Hypervisor: Proxmox VE
+* Hypervisor Type: Type-1
+* Guest OS: Ubuntu
+* vCPU: 2
+* RAM: 2048 MB
+* Disk: 20 GB
+* Network: vmbr0
+* Benchmark Tool: Sysbench
 
-<h3>Commands Used</h3>
+### Commands Used and Their Purpose
 
-<pre>
-hostnamectl
-lscpu
-free -h
-df -h
-top
-ping -c 3 google.com
-sudo apt update
-sudo apt install sysbench -y
-sysbench --version
-sysbench cpu --cpu-max-prime=20000 run
-</pre>
+| Command                                  | Purpose                                                           |
+| ---------------------------------------- | ----------------------------------------------------------------- |
+| `hostnamectl`                            | Displays the system and operating system information.             |
+| `lscpu`                                  | Displays CPU architecture and processor information.              |
+| `free -h`                                | Displays RAM and memory usage in human-readable format.           |
+| `df -h`                                  | Displays disk-space usage of the file systems.                    |
+| `top`                                    | Displays running processes and current CPU and memory usage.      |
+| `ping -c 3 google.com`                   | Checks network connectivity and measures response time.           |
+| `sudo apt update`                        | Updates the Ubuntu package information.                           |
+| `sudo apt install sysbench -y`           | Installs the Sysbench benchmarking tool.                          |
+| `sysbench --version`                     | Displays the installed Sysbench version.                          |
+| `sysbench cpu --cpu-max-prime=20000 run` | Runs a CPU benchmark using prime-number calculations up to 20000. |
 
-<h2>Type-2 Hypervisor - VMware Workstation</h2>
+---
 
-<h3>Configuration</h3>
+## Type-2 Hypervisor – VMware Workstation
 
-<ul>
-<li>Hypervisor: VMware Workstation</li>
-<li>Hypervisor Type: Type-2</li>
-<li>Guest OS: Ubuntu</li>
-<li>vCPU: 2</li>
-<li>RAM: 2048 MB</li>
-<li>Disk: 20 GB</li>
-<li>Network: NAT</li>
-<li>Benchmark Tool: Sysbench</li>
-</ul>
+### Configuration
 
-<h3>Commands Used</h3>
+* Hypervisor: VMware Workstation
+* Hypervisor Type: Type-2
+* Guest OS: Ubuntu
+* vCPU: 2
+* RAM: 2048 MB
+* Disk: 20 GB
+* Network: NAT
+* Benchmark Tool: Sysbench
 
-<pre>
-hostnamectl
-lscpu
-free -h
-df -h
-top
-ping -c 3 google.com
-sudo apt update
-sudo apt install sysbench -y
-sysbench --version
-sysbench cpu --cpu-max-prime=20000 run
-</pre>
+### Commands Used and Their Purpose
 
-<h2>Docker</h2>
+| Command                                  | Purpose                                                           |
+| ---------------------------------------- | ----------------------------------------------------------------- |
+| `hostnamectl`                            | Displays the system and operating system information.             |
+| `lscpu`                                  | Displays CPU architecture and processor information.              |
+| `free -h`                                | Displays RAM and memory usage in human-readable format.           |
+| `df -h`                                  | Displays disk-space usage of the file systems.                    |
+| `top`                                    | Displays running processes and current CPU and memory usage.      |
+| `ping -c 3 google.com`                   | Checks network connectivity and measures response time.           |
+| `sudo apt update`                        | Updates the Ubuntu package information.                           |
+| `sudo apt install sysbench -y`           | Installs the Sysbench benchmarking tool.                          |
+| `sysbench --version`                     | Displays the installed Sysbench version.                          |
+| `sysbench cpu --cpu-max-prime=20000 run` | Runs a CPU benchmark using prime-number calculations up to 20000. |
 
-<h3>Container-Based Application</h3>
+---
 
-<h3>Configuration</h3>
+## Docker
 
-<ul>
-<li>Container Platform: Docker</li>
-<li>Host OS: Windows 11</li>
-<li>Container OS: Linux</li>
-<li>Base Image: Python 3.12-slim</li>
-<li>Application: Python Flask Web Application</li>
-<li>Container Port: 5000</li>
-<li>Host Port: 5000</li>
-<li>Container Name: my-python-container</li>
-<li>Docker Image: my-python-app</li>
-</ul>
+### Container-Based Application
 
-<h3>Application</h3>
+### Configuration
 
-<p>A simple Python Flask web application was created and containerized using Docker.</p>
+* Container Platform: Docker
+* Host OS: Windows 11
+* Container OS: Linux
+* Base Image: Python 3.12-slim
+* Application: Python Flask Web Application
+* Container Port: 5000
+* Host Port: 5000
+* Container Name: my-python-container
+* Docker Image: my-python-app
 
-<p>The application displays:</p>
+### Application
 
-<pre>
+A simple Python Flask web application was created and containerized using Docker.
+
+The application displays:
+
+```text
 Hello! My first Docker application is running.
-</pre>
+```
 
-<h3>Files Used</h3>
+### Files Used
 
-<ul>
-<li>app.py – Flask web application</li>
-<li>requirements.txt – Flask dependency</li>
-<li>Dockerfile – Instructions for building the Docker image</li>
-</ul>
+* `app.py` – Flask web application
+* `requirements.txt` – Flask dependency
+* `Dockerfile` – Instructions for building the Docker image
 
-<h3>Dockerfile</h3>
+### Dockerfile
 
-<pre>
+```dockerfile
 FROM python:3.12-slim
 WORKDIR /app
 COPY requirements.txt .
@@ -106,140 +102,76 @@ RUN pip install -r requirements.txt
 COPY app.py .
 EXPOSE 5000
 CMD ["python", "app.py"]
-</pre>
+```
 
-<h3>Commands Used</h3>
+### Commands Used
 
-<pre>
-wsl --version
-docker --version
-docker run hello-world
-docker buildx build --load -t my-python-app .
-docker images
-docker run -d -p 5000:5000 --name my-python-container my-python-app
-docker ps
-docker logs my-python-container
-docker stop my-python-container
-docker ps
-docker start my-python-container
-docker ps
-docker stop my-python-container
-docker rm my-python-container
-docker ps -a
-docker images
-</pre>
+| Command                                                               | Purpose                                                                          |
+| --------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `wsl --version`                                                       | Displays the installed WSL version.                                              |
+| `docker --version`                                                    | Displays the installed Docker version.                                           |
+| `docker run hello-world`                                              | Tests whether Docker can successfully run a container.                           |
+| `docker buildx build --load -t my-python-app .`                       | Builds the Docker image named `my-python-app`.                                   |
+| `docker images`                                                       | Lists the Docker images available on the system.                                 |
+| `docker run -d -p 5000:5000 --name my-python-container my-python-app` | Creates and starts the container and maps host port 5000 to container port 5000. |
+| `docker ps`                                                           | Displays currently running containers.                                           |
+| `docker logs my-python-container`                                     | Displays the logs generated by the container.                                    |
+| `docker stop my-python-container`                                     | Stops the running container.                                                     |
+| `docker ps`                                                           | Checks the running containers after stopping the container.                      |
+| `docker start my-python-container`                                    | Starts the stopped container again.                                              |
+| `docker ps`                                                           | Checks whether the container is running again.                                   |
+| `docker stop my-python-container`                                     | Stops the container before removal.                                              |
+| `docker rm my-python-container`                                       | Removes the Docker container.                                                    |
+| `docker ps -a`                                                        | Displays all containers, including stopped containers.                           |
+| `docker images`                                                       | Verifies that the Docker image is still available after container removal.       |
 
-<h3>Accessing the Application</h3>
+### Accessing the Application
 
-<p>The Flask application was accessed through the browser using:</p>
+The Flask application was accessed through the browser using:
 
-<pre>http://localhost:5000</pre>
+```text
+http://localhost:5000
+```
 
-<h3>Result</h3>
+### Result
 
-<p>The Docker image was successfully built and the container was created and started successfully. The Flask application was accessed through the mapped host port 5000.</p>
+The Docker image was successfully built and the container was created and started successfully. The Flask application was accessed through the mapped host port 5000.
 
-<p>The container was also successfully stopped, restarted, and finally removed while the Docker image remained available.</p>
+The container was also successfully stopped, restarted, and finally removed while the Docker image remained available.
 
-<h2>Comparison of Type-1 and Type-2 Hypervisors</h2>
+---
 
-<h3>Configuration Comparison</h3>
+## Comparison of Type-1 and Type-2 Hypervisors
 
-<table>
-<tr>
-<th>Feature</th>
-<th>Type-1: Proxmox VE</th>
-<th>Type-2: VMware Workstation</th>
-</tr>
-<tr>
-<td>Hypervisor Type</td>
-<td>Type-1</td>
-<td>Type-2</td>
-</tr>
-<tr>
-<td>Guest OS</td>
-<td>Ubuntu</td>
-<td>Ubuntu</td>
-</tr>
-<tr>
-<td>vCPU</td>
-<td>2</td>
-<td>2</td>
-</tr>
-<tr>
-<td>RAM</td>
-<td>2048 MB</td>
-<td>2048 MB</td>
-</tr>
-<tr>
-<td>Disk</td>
-<td>20 GB</td>
-<td>20 GB</td>
-</tr>
-<tr>
-<td>Network</td>
-<td>vmbr0</td>
-<td>NAT</td>
-</tr>
-<tr>
-<td>Benchmark Tool</td>
-<td>Sysbench</td>
-<td>Sysbench</td>
-</tr>
-</table>
+### Configuration Comparison
 
-<h3>Performance Comparison</h3>
+| **Feature**     | **Type-1: Proxmox VE** | **Type-2: VMware Workstation** |
+| --------------- | ---------------------- | ------------------------------ |
+| Hypervisor Type | Type-1                 | Type-2                         |
+| Guest OS        | Ubuntu                 | Ubuntu                         |
+| vCPU            | 2                      | 2                              |
+| RAM             | 2048 MB                | 2048 MB                        |
+| Disk            | 20 GB                  | 20 GB                          |
+| Network         | vmbr0                  | NAT                            |
+| Benchmark Tool  | Sysbench               | Sysbench                       |
 
-<table>
-<tr>
-<th>Metric</th>
-<th>Type-1: Proxmox VE</th>
-<th>Type-2: VMware Workstation</th>
-</tr>
-<tr>
-<td>CPU Benchmark</td>
-<td>Sysbench CPU</td>
-<td>Sysbench CPU</td>
-</tr>
-<tr>
-<td>CPU Prime Limit</td>
-<td>20000</td>
-<td>20000</td>
-</tr>
-<tr>
-<td>Number of Threads</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Total Execution Time</td>
-<td>10.0006 seconds</td>
-<td>10.0005 seconds</td>
-</tr>
-<tr>
-<td>Total Events</td>
-<td>16903</td>
-<td>181042</td>
-</tr>
-<tr>
-<td>Events per Second</td>
-<td>1689.43</td>
-<td>18101.20</td>
-</tr>
-<tr>
-<td>Average Latency</td>
-<td>0.59 ms</td>
-<td>0.05 ms</td>
-</tr>
-</table>
+### Performance Comparison
 
-<h3>Performance Graphs</h3>
+| **Metric**           | **Type-1: Proxmox VE** | **Type-2: VMware Workstation** |
+| -------------------- | ---------------------: | -----------------------------: |
+| CPU Benchmark        |           Sysbench CPU |                   Sysbench CPU |
+| CPU Prime Limit      |                  20000 |                          20000 |
+| Number of Threads    |                      1 |                              1 |
+| Total Execution Time |        10.0006 seconds |                10.0005 seconds |
+| Total Events         |                  16903 |                         181042 |
+| Events per Second    |                1689.43 |                       18101.20 |
+| Average Latency      |                0.59 ms |                        0.05 ms |
 
-<p>The following graphs show the measured performance comparison between Proxmox VE and VMware Workstation:</p>
+### Performance Graphs
 
-<ul>
-<li>CPU Events per Second</li>
-<li>Total Execution Time</li>
-<li>Average Latency</li>
-<li>Allocated Memory</li>
-</ul>
+The following graphs show the measured performance comparison between Proxmox VE and VMware Workstation:
+
+* CPU Events per Second
+* Total Execution Time
+* Average Latency
+* Allocated Memory
